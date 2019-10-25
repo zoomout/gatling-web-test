@@ -12,6 +12,6 @@ Run a single simulation
 -----------------------
 
 ```bash
-> gatling:testOnly computerdatabase.AddProductAndCustomer
+> gatling:testOnly com.bogdan.AddProductAndCustomer
 ```
 
