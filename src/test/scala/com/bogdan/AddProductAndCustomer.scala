@@ -9,7 +9,7 @@ import scala.concurrent.duration._
 class AddProductAndCustomer extends Simulation {
 
   private val httpProtocol = http
-    .baseUrl("http://localhost:8080")
+    .baseUrl("http://localhost:10080")
     .contentTypeHeader("application/json")
 
   val scn: ScenarioBuilder = scenario("AddProductAndCustomer")

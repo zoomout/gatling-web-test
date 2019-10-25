@@ -8,10 +8,9 @@ Start SBT
 $ sbt
 ```
 
-Run a single simulation
+Run a single simulation from sbt console
 -----------------------
-
 ```bash
-> gatling:testOnly com.bogdan.AddProductAndCustomer
+gatling:testOnly com.bogdan.AddProductAndCustomer
 ```
 
