@@ -6,10 +6,10 @@ import io.gatling.http.Predef._
 
 import scala.concurrent.duration._
 
-class GetProductAndCustomer extends Simulation {
+class GetProductAndCustomer extends BaseSimulation {
 
   private val httpProtocol = http
-    .baseUrl("http://localhost:10080")
+    .baseUrl(baseUrl)
     .contentTypeHeader("application/json")
     .shareConnections
 
@@ -27,6 +27,6 @@ class GetProductAndCustomer extends Simulation {
     )
 
   setUp(scn.inject(
-    rampUsersPerSec(10) to 3800 during (60 seconds),
+    rampUsersPerSec(10) to 3600 during (60 seconds),
   )).protocols(httpProtocol)
 }
