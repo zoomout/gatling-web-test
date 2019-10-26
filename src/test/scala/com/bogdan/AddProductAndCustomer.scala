@@ -28,6 +28,6 @@ class AddProductAndCustomer extends Simulation {
     )
 
   setUp(scn.inject(
-    constantUsersPerSec(100) during (1 minute)
+    rampUsersPerSec(10) to 300 during (1 minute)
   )).protocols(httpProtocol)
 }
