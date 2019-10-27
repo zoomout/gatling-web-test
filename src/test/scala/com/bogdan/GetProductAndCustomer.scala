@@ -27,6 +27,6 @@ class GetProductAndCustomer extends BaseSimulation {
     )
 
   setUp(scn.inject(
-    rampUsersPerSec(10) to 3600 during (60 seconds),
+    rampUsersPerSec(10) to 1000 during (60 seconds),
   )).protocols(httpProtocol)
 }
