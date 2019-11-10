@@ -5,7 +5,7 @@ Web application under test: https://github.com/zoomout/spring-persistent-web
 Start SBT
 ---------
 ```bash
-$ sbt
+sbt
 ```
 
 Run a single simulation from sbt console
