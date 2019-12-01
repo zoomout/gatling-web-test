@@ -18,11 +18,11 @@ class GetAggregatedResults extends BaseSimulation {
       .get(session => s"""/aggregation?pricing=A,B,C,D,E""")
       .check(
         status is 200,
-        jsonPath("$..pricing.A").ofType[Double].gte("0.0"),
-        jsonPath("$..pricing.B").ofType[Double].gte("0.0"),
-        jsonPath("$..pricing.C").ofType[Double].gte("0.0"),
-        jsonPath("$..pricing.D").ofType[Double].gte("0.0"),
-        jsonPath("$..pricing.E").ofType[Double].gte("0.0"),
+        jsonPath("$..pricing.A").ofType[Double].gte("0.01"),
+        jsonPath("$..pricing.B").ofType[Double].gte("0.01"),
+        jsonPath("$..pricing.C").ofType[Double].gte("0.01"),
+        jsonPath("$..pricing.D").ofType[Double].gte("0.01"),
+        jsonPath("$..pricing.E").ofType[Double].gte("0.01"),
         jsonPath("$..track").isNull,
         jsonPath("$..shipments").isNull,
       ))
@@ -54,11 +54,11 @@ class GetAggregatedResults extends BaseSimulation {
       .get(session => s"""/aggregation?pricing=A,B,C,D,E&track=1,2,3,4,5&shipments=1,2,3,4,5""")
       .check(
         status is 200,
-        jsonPath("$..pricing.A").ofType[Double].gte("0.0"),
-        jsonPath("$..pricing.B").ofType[Double].gte("0.0"),
-        jsonPath("$..pricing.C").ofType[Double].gte("0.0"),
-        jsonPath("$..pricing.D").ofType[Double].gte("0.0"),
-        jsonPath("$..pricing.E").ofType[Double].gte("0.0"),
+        jsonPath("$..pricing.A").ofType[Double].gte("0.01"),
+        jsonPath("$..pricing.B").ofType[Double].gte("0.01"),
+        jsonPath("$..pricing.C").ofType[Double].gte("0.01"),
+        jsonPath("$..pricing.D").ofType[Double].gte("0.01"),
+        jsonPath("$..pricing.E").ofType[Double].gte("0.01"),
         jsonPath("$..track.1").exists,
         jsonPath("$..track.2").exists,
         jsonPath("$..track.3").exists,
@@ -74,9 +74,9 @@ class GetAggregatedResults extends BaseSimulation {
       .get(session => s"""/aggregation?pricing=A,B,C""")
       .check(
         status is 200,
-        jsonPath("$..pricing.A").ofType[Double].gte("0.0"),
-        jsonPath("$..pricing.B").ofType[Double].gte("0.0"),
-        jsonPath("$..pricing.C").ofType[Double].gte("0.0"),
+        jsonPath("$..pricing.A").ofType[Double].gte("0.01"),
+        jsonPath("$..pricing.B").ofType[Double].gte("0.01"),
+        jsonPath("$..pricing.C").ofType[Double].gte("0.01"),
         jsonPath("$..pricing.D").notExists,
         jsonPath("$..pricing.E").notExists,
         jsonPath("$..track").isNull,
@@ -88,9 +88,9 @@ class GetAggregatedResults extends BaseSimulation {
         status is 200,
         jsonPath("$..pricing.A").notExists,
         jsonPath("$..pricing.B").notExists,
-        jsonPath("$..pricing.C").ofType[Double].gte("0.0"),
-        jsonPath("$..pricing.D").ofType[Double].gte("0.0"),
-        jsonPath("$..pricing.E").ofType[Double].gte("0.0"),
+        jsonPath("$..pricing.C").ofType[Double].gte("0.01"),
+        jsonPath("$..pricing.D").ofType[Double].gte("0.01"),
+        jsonPath("$..pricing.E").ofType[Double].gte("0.01"),
         jsonPath("$..track").isNull,
         jsonPath("$..shipments").isNull,
       ))
