@@ -8,8 +8,6 @@ import scala.concurrent.duration._
 
 class GetAggregatedResults extends BaseSimulation {
 
-  private def randomNumber() = 5+scala.util.Random.nextInt(11)
-
   private val httpProtocol = http
     .baseUrl(baseUrl)
 
@@ -101,6 +99,6 @@ class GetAggregatedResults extends BaseSimulation {
       ))
 
   setUp(scn.inject(
-    rampUsersPerSec(1) to 50 during (10 seconds)
+    rampUsersPerSec(1) to 600 during (30 seconds)
   )).protocols(httpProtocol)
 }
