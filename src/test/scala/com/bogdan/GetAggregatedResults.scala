@@ -73,6 +73,18 @@ class GetAggregatedResults extends BaseSimulation {
         jsonPath("$..shipments.4[*]").count.is(4),
         jsonPath("$..shipments.5[*]").count.is(5),
       ))
+    .exec(http("get not overlapping partial pricing D,E")
+      .get(session => s"""/aggregation?pricing=D,E""")
+      .check(
+        status is 200,
+        jsonPath("$..pricing.A").notExists,
+        jsonPath("$..pricing.B").notExists,
+        jsonPath("$..pricing.C").notExists,
+        jsonPath("$..pricing.D").ofType[Double].gte("0.01"),
+        jsonPath("$..pricing.E").ofType[Double].gte("0.01"),
+        jsonPath("$..track").isNull,
+        jsonPath("$..shipments").isNull,
+      ))
     .exec(http("get overlapping partial pricing A,B,C")
       .get(session => s"""/aggregation?pricing=A,B,C""")
       .check(
@@ -99,6 +111,6 @@ class GetAggregatedResults extends BaseSimulation {
       ))
 
   setUp(scn.inject(
-    rampUsersPerSec(1) to 600 during (30 seconds)
+    rampUsersPerSec(1) to 300 during (20 seconds)
   )).protocols(httpProtocol)
 }
